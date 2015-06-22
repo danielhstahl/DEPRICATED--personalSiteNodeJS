@@ -1,0 +1,5 @@
+<title><%= name %></title><nav id='bt-menu' class='bt-menu'>
+    <a href='#' class='bt-menu-trigger'><span>Menu</span></a>
+    <ul>        <% menuNames.forEach(function(value){ %>            <li class='links txt'><a href='<%=value.fileName%>'><%=value.Name%></a></li>        <%}); %>
+    </ul>
+</nav>

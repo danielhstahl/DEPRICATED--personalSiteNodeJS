@@ -1,0 +1,48 @@
+<html>
+    <head>
+         <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+        <script src='//code.jquery.com/ui/1.11.4/jquery-ui.js'></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+       
+    </head>
+    <body>
+        <div id='chartByPage'></div>
+        <div id='chartByTime'></div>
+
+
+    </body>
+    <script type='text/javascript'>
+    $(document).ready(function(){
+        var chart="";
+        var socket=io();
+        socket.emit('siteEntered', "");
+        socket.on('updateData', function(msg){
+            console.log(msg);
+            drawChart(msg);
+        });
+        
+        function drawChart(data){
+            
+            if(chart){
+                chart.data=data;
+            }
+            else{
+                var svg = dimple.newSvg("#chartByPage", 800, 600);
+                var keys=Object.keys(data[0]);
+                chart = new dimple.chart(svg, data);
+                chart.addCategoryAxis("x", keys[0]);
+                chart.addMeasureAxis("y", keys[1]);
+                chart.addSeries(null, dimple.plot.bar);
+            }
+            chart.draw(500);
+        }
+        
+     });  
+    </script>
+
+
+</html>
