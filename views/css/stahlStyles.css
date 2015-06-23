@@ -20,26 +20,26 @@ body.main{    padding: 0;}
     background-size:cover;
     padding-top: 0px; /*overrides .panel */
 }
-#displayName {
+#displayName {    font-weight: bold;
     position: relative;
     top: 60%;
      display: block;
-    font-family: 'Source Sans Pro', sans-serif;    /*font-size: 2.5em;*/
+    font-family: 'Raleway', sans-serif;    /*font-size: 2.5em;*/
     /*font-size: 6vh;*/
     /*font-size: 500%;*/
     color:#F2F2F2;
 }
-
+.addMargin{ margin-top:100px;}
 .title {
    /*font-size: 250%;*/   /*font-size: 2.25em;*/
    display: block;
-   font-family: 'Source Sans Pro', sans-serif;
-
-}h1 {    margin-top:20px;}h2, h3{     margin-top: 0px;}
+   font-family: 'Raleway', sans-serif;    font-weight: bold;
+    /*margin-top:100px;*/
+}h1 {    margin-top:20px;}h2, h3{    margin-top: 0px;}
 .subTitle {
    /*font-size: 200%;  */   /* font-size: 2em;*/
-   display: block;   
-   font-family: 'Source Sans Pro', sans-serif;
+   display: block;   font-weight: bold;
+   font-family: 'Raleway', sans-serif;
 
 }
 .list-group { 
@@ -51,10 +51,10 @@ body.main{    padding: 0;}
     text-align:left;
 }
 .txt {
-    /*font-size: 150%; */    font-size: 1.5em;
+    /*font-size: 150%; */    font-size: 2.2rem;
    /* font-size: 175%;*/    margin-bottom:20px;
-   display: block;
-   font-family: 'Source Sans Pro', sans-serif;
+   display: block;    line-height: 1.7em;
+   font-family: 'Raleway', sans-serif;
 }  
 .productivity  { 
     background-color: #FCFCFC;

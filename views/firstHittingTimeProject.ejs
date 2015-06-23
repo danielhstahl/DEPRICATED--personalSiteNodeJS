@@ -22,56 +22,59 @@
 		
 		<div class='navbar-fixed-top'>
             <div class="container title lead">
+
                <h1>Compute the Density of the First Hitting Time</h1>
+     
             </div>
         </div>
         <div class="container">
+            
             <div class='row txt'>
                 This application computes the density of the first hitting time of a CEV process.  See  <a href='<% include assets/includes/scrapeSimilar %>'>first hitting time density description</a> for an explanation for the mathematics behind this application.
             </div>
-			<div class='row'>
-				<div class='col-md-4'>
-					<div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">Value To Hit</span>
-						<input id="m" type="text" name="" class="form-control required" placeholder="5">
-					</div>
-					<div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">alpha</span> 
-						<input id="alpha"  type="text" name="" class="form-control required" placeholder=".1">
-					</div> 
-					
-					<div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">sigma</span>
-						<input id="sigma" type="text" name="" class="form-control required" placeholder=".3">
-					</div>
-					<div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">delta</span> 
-						<input id="delta" type="text" name="" class="form-control required" placeholder=".8">
-					</div> 
-					
-					<div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">Discrete steps in "u"</span>
-						<input id="n" type="text" name="" class="form-control required" placeholder="256">
-					</div>
-					<div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">Discrete steps in "t"</span> 
-						<input id="k" type="text" name="" class="form-control required" placeholder="512">
-					</div> 
-					<div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">Discrete steps in "x"</span> 
-						<input id="l" type="text" name="" class="form-control required" placeholder="300">
-					</div>
-					<input id='submitButton' type="submit" class="btn btn-primary"></input>
-				</div>
-				
-				<div class='col-md-6'>
-					
-					<div id="chart">
-					</div>
-					<div class="progress">
-						<div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
-					</div>
-				</div>
+            <div class='row'>
+                <div class='col-md-4'>
+                    <div class="input-group"><span class="input-group" id="">
+                        <span class="input-group-addon" id="">Value To Hit</span>
+                        <input id="m" type="text" name="" class="form-control required" placeholder="5">
+                    </div>
+                    <div class="input-group"><span class="input-group" id="">
+                        <span class="input-group-addon" id="">alpha</span> 
+                        <input id="alpha"  type="text" name="" class="form-control required" placeholder=".1">
+                    </div> 
+                    
+                    <div class="input-group"><span class="input-group" id="">
+                        <span class="input-group-addon" id="">sigma</span>
+                        <input id="sigma" type="text" name="" class="form-control required" placeholder=".3">
+                    </div>
+                    <div class="input-group"><span class="input-group" id="">
+                        <span class="input-group-addon" id="">delta</span> 
+                        <input id="delta" type="text" name="" class="form-control required" placeholder=".8">
+                    </div> 
+                    
+                    <div class="input-group"><span class="input-group" id="">
+                        <span class="input-group-addon" id="">Discrete steps in "u"</span>
+                        <input id="n" type="text" name="" class="form-control required" placeholder="256">
+                    </div>
+                    <div class="input-group"><span class="input-group" id="">
+                        <span class="input-group-addon" id="">Discrete steps in "t"</span> 
+                        <input id="k" type="text" name="" class="form-control required" placeholder="512">
+                    </div> 
+                    <div class="input-group"><span class="input-group" id="">
+                        <span class="input-group-addon" id="">Discrete steps in "x"</span> 
+                        <input id="l" type="text" name="" class="form-control required" placeholder="300">
+                    </div>
+                    <input id='submitButton' type="submit" class="btn btn-primary"></input>
+                </div>
+                
+                <div class='col-md-6'>
+                    
+                    <div id="chart">
+                    </div>
+                    <div class="progress">
+                        <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                    </div>
+                </div>
                 <div class='col-md-2'> 
                     
                     <div class="dropdown push-right"> 
@@ -83,8 +86,7 @@
                     </div>
                 
                 </div>
-			</div>
-			
+            </div>
 			
 		</div>
         <% include  assets/includes/menu %><!--side menu -->
