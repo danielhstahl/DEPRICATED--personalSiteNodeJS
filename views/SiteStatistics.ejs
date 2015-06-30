@@ -11,36 +11,55 @@
     </head>
     <body>
         <div id='chartByPage'></div>
-        <div id='chartByTime'></div>
+        <div id='chartByAvg'></div>
 
 
     </body>
     <script type='text/javascript'>
     $(document).ready(function(){
-        var chart="";
+        var chartView="";
+        var chartAvg="";
         var socket=io();
         socket.emit('siteEntered', "");
-        socket.on('updateData', function(msg){
-            console.log(msg);
-            drawChart(msg);
+        socket.on('totalViews', function(msg){
+            //console.log(msg);
+            drawViewChart(msg);
+        });
+        socket.on('averageView', function(msg){
+            //console.log(msg);
+            drawAvgChart(msg);
         });
         
-        function drawChart(data){
+        function drawViewChart(data){
             
-            if(chart){
-                chart.data=data;
+            if(chartView){
+                chartView.data=data;
             }
             else{
                 var svg = dimple.newSvg("#chartByPage", 800, 600);
                 var keys=Object.keys(data[0]);
-                chart = new dimple.chart(svg, data);
-                chart.addCategoryAxis("x", keys[0]);
-                chart.addMeasureAxis("y", keys[1]);
-                chart.addSeries(null, dimple.plot.bar);
+                chartView = new dimple.chart(svg, data);
+                chartView.addCategoryAxis("x", keys[0]);
+                chartView.addMeasureAxis("y", keys[1]);
+                chartView.addSeries(null, dimple.plot.bar);
             }
-            chart.draw(500);
+            chartView.draw(500);
         }
-        
+        function drawAvgChart(data){
+            
+            if(chartAvg){
+                chartAvg.data=data;
+            }
+            else{
+                var svg = dimple.newSvg("#chartByAvg", 800, 600);
+                var keys=Object.keys(data[0]);
+                chartAvg = new dimple.chart(svg, data);
+                chartAvg.addCategoryAxis("x", keys[0]);
+                chartAvg.addMeasureAxis("y", keys[1]);
+                chartAvg.addSeries(null, dimple.plot.bar);
+            }
+            chartAvg.draw(500);
+        }
      });  
     </script>
 
