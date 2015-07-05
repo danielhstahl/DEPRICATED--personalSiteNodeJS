@@ -22,7 +22,7 @@
                     </div>
 					<div class="input-group"><span class="input-group" id="">
 						<span class="input-group-addon" id="NumAssets">Number of Assets</span>
-						<input id="n" type="text" name="" class="form-control required" placeholder="10000">
+						<input id="n" type="text" name="" class="form-control required" placeholder="100000">
 					</div>
                     <div class="input-group"><span class="input-group" id="">
 						<span class="input-group-addon" id="NumAssets">Time Horizon</span>
@@ -37,18 +37,18 @@
                     <div class='subTitle lead'>
                         <h2>Exposure</h2>
                     </div>
-                    <div class='toggle txt' id='Exposure'>
-                        This is the distribution for the exposure of each asset.  In this case, the distribution for each exposure is an identical Gamma distribution with parameters \(a\) and \(b\).  The mean and variance of the distribution is \(ab\) and \(ab^2\) respectively.  In general, the exposures may follow completely different distributions for each asset, but it would be onerous to specify a different distribution for each of \(n\) assets.  
+                    <div class='toggle txt' id='Exposure'>                        
+                        This is the distribution for the exposure of each asset.  In this case, each exposure follows a CIR process \(dL=\mu(b-L)dt+v \sqrt{L} dW_t\).  In general, the exposures may follow completely different distributions for each asset, but it would be onerous to specify a different distribution for each of \(n\) assets.  
                     </div>
                     <div class="input-group"><span class="input-group" id="">
-						<span class="input-group-addon" id="">a</span> 
-						<input id="a" type="text" name="" class="form-control required" placeholder="5">
+						<span class="input-group-addon" id="">mu</span> 
+						<input id="mu" type="text" name="" class="form-control required" placeholder=".3">
 					</div> 
 					
 					<div class="input-group"><span class="input-group" id="">
 						<span class="input-group-addon" id="">b</span>
-						<input id="b" type="text" name="" class="form-control required" placeholder="600">
-					</div>
+						<input id="b" type="text" name="" class="form-control required" placeholder=".5">
+					</div>                                        <div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">v</span>						<input id="v" type="text" name="" class="form-control required" placeholder=".2">					</div>                    <button class='btn btn-success btn-block' id='newSampleCir'>Generate Additional Sample Path</button>
                     
                 </div>
                 <div class='col-md-8'>   
@@ -71,7 +71,7 @@
 					<div class="input-group"><span class="input-group" id="">
 						<span class="input-group-addon" id="">Maximum PD</span> 
 						<input id="maxPD"  type="text" name="" class="form-control required" placeholder=".1">
-					</div> 
+					</div>                     
 										
 				</div>
 			</div>
@@ -102,7 +102,7 @@
 				<div class='col-md-8'>   
                     <div id="UnderlyingChart"></div>
                 </div>
-			</div>            <hr>            <div class='row'>                <div id='diffusion' class='col-md-12 holdSection'>                    <div class='subTitle lead'>                        <h2>Drift Parameter</h2>                    </div>                    <div class='toggle txt' id='diffsection'>                        The model allows for drift for each asset; time changed by the systemic default process.  The drift is thus correlated with the potential for credit loss.  An alternate interpretation in the case of a multidimensional systemic process can be made if one of the dimensions is considered an interest rate.  Then the drift can have the interpretation as the linear function of the interest rate.  This would be a reasonable interpretation if many of the assets were variable rate loans tied to a single benchmark.                    </div>					<!--<div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">sigma</span>						<input id="sig" type="text" name="" class="form-control required" placeholder=".1">					</div>-->                    <div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">alpha</span>						<input id="alph" type="text" name="" class="form-control required" placeholder=".05">					</div>				</div>            </div>            <hr>            <div class='row'>                <div id='liquidity' class='col-md-12 holdSection'>                    <div class='subTitle lead'>                        <h2>Liquidity Parameters</h2>                    </div>                    <div class='toggle txt' id='diffsection'>                        The model allows for endogenous liquidity risk.  The probability of having a run on liabilities is increasing in the asset loss, so the greater the asset loss the higher the probability of having to fire-sell assets to cover liabilities.  \(q\) is proportional to the probability of a liquidity crisis while \(\lambda\) is proportional to the severity of the loss.                    </div>					<div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">q</span>						<input id="q" type="text" name="" class="form-control required" placeholder=".05">					</div>                    <div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">lambda</span>						<input id="lambda" type="text" name="" class="form-control required" placeholder=".05">					</div>				</div>            </div>            <hr>            <div class='row'>                <div id='diffusion' class='col-md-12 holdSection'>                    <div class='subTitle lead'>                        <h2>Model Parameters</h2>                    </div>                    <div class='toggle txt' id='diffsection'>                        Select the number of discrete steps in \(x\) and the number of discrete steps in \(u\).  The higher these numbers, the slower the model will run; but the more precise the model will be.                    </div>					<div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">Steps in \(x\)</span>						<input id="h" type="text" name="" class="form-control required" placeholder="1024">					</div>                    <div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">Steps in \(u\)</span>						<input id="k" type="text" name="" class="form-control required" placeholder="256">					</div>				</div>            </div>
+			</div>            <hr>            <div class='row'>                <div id='diffusion' class='col-md-12 holdSection'>                    <div class='subTitle lead'>                        <h2>Drift Parameter</h2>                    </div>                    <div class='toggle txt' id='diffsection'>                        The model allows for drift for each asset; time changed by the systemic default process.  The drift is thus correlated with the potential for credit loss.  An alternate interpretation in the case of a multidimensional systemic process can be made if one of the dimensions is considered an interest rate.  Then the drift can have the interpretation as the linear function of the interest rate.  This would be a reasonable interpretation if many of the assets were variable rate loans tied to a single benchmark.                    </div>					<!--<div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">sigma</span>						<input id="sig" type="text" name="" class="form-control required" placeholder=".1">					</div>-->                    <div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">alpha</span>						<input id="alph" type="text" name="" class="form-control required" placeholder=".05">					</div>				</div>            </div>            <hr>            <div class='row'>                <div id='liquidity' class='col-md-12 holdSection'>                    <div class='subTitle lead'>                        <h2>Liquidity Parameters</h2>                    </div>                    <div class='toggle txt' id='diffsection'>                        The model allows for endogenous liquidity risk.  The probability of having a run on liabilities is increasing in the asset loss, so the greater the asset loss the higher the probability of having to fire-sell assets to cover liabilities.  \(q\) is proportional to the probability of a liquidity crisis while \(\lambda\) is proportional to the severity of the loss.                    </div>					<div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">q</span>						<input id="q" type="text" name="" class="form-control required" placeholder=".05">					</div>                    <div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">lambda</span>						<input id="lambda" type="text" name="" class="form-control required" placeholder=".05">					</div>				</div>            </div>            <hr>            <div class='row'>                <div id='diffusion' class='col-md-12 holdSection'>                    <div class='subTitle lead'>                        <h2>Model Parameters</h2>                    </div>                    <div class='toggle txt' id='diffsection'>                        Select the number of discrete steps in \(x\) and the number of discrete steps in \(u\).  The higher these numbers, the slower the model will run; but the more precise the model will be.                    </div>					<div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">Steps in \(x\)</span>						<input id="h" type="text" name="" class="form-control required" placeholder="1024">					</div>                    <div class="input-group"><span class="input-group" id="">						<span class="input-group-addon" id="">Steps in \(u\)</span>						<input id="k" type="text" name="" class="form-control required" placeholder="128">					</div>				</div>            </div>
             <hr>
 			<div class='row'>
                 <div class='col-md-4'>
@@ -120,7 +120,7 @@
     <script>
         $('.progress').hide();//('hidden');
         var exposureChart="";
-        var tsChart="";
+        var tsChart={};
         var unifChart="";
         var finalChart="";
         var xAxis;
@@ -130,13 +130,20 @@
        
         $('#newSample').click(function(e){
             getValues();
-            var data=createTS(attributes.X0, attributes.alpha, attributes.sigma, attributes.t);
-            tsChart.addSeries({                        
+            var data=createTS(attributes.X0, attributes.alpha, 1.0, attributes.sigma, attributes.t, 0);
+            tsChart["UnderlyingChart"].addSeries({                        
                 name: "Sample Path",
                 data: data[1] 
             });
             return false;
-        });
+        });        $('#newSampleCir').click(function(e){
+            getValues();
+            var data=createTS(attributes.b, attributes.mu, attributes.b, attributes.v, attributes.t, .5);            tsChart["ExposureChart"].addSeries({                        
+                name: "Sample Path",
+                data: data[1] 
+            });
+            return false;
+        });        
         $('span.input-group-addon').click(function(e){
             $(this).closest('.holdSection').find('.toggle').show();
         }); 
@@ -157,42 +164,42 @@
         }*/        var socket=io();
         $('#submitButton').click(function(e){
             getValues();            socket.removeAllListeners();
-            $('#progressBar').css("width", '0%');            var lossGivinLiquid=attributes.n*attributes.a*attributes.b*attributes.lambda;             var options={};            //var param=computeP();
+            $('#progressBar').css("width", '0%');            var maxL=40000.0;//hardcoded for now            var minL=10000.0;            var exL=(maxL+minL)/2.0;                        var lossGivinLiquid=attributes.n*exL*attributes.lambda;             var options={};            //var param=computeP();
             //options.p=param[0];
             //options.l=param[3]; //doesnt matter....not used
             //options.r=param[1];//no liquidity per loan            if(lossGivinLiquid>0){
-                options.q=attributes.q/lossGivinLiquid;//liquidity            }            else {                options.q=0;            }
+                options.q=attributes.q/lossGivinLiquid;//liquidity            }            else {                options.q=0;            }            options.maxL=maxL;            options.minL=minL;
             options.rho=[[1]];//['rho'];
             options.alpha=[attributes.alpha];
-            options.a=attributes.a;//gamma parameter
-            options.b=attributes.b;//gamma parameter
+            //options.a=attributes.a;//gamma parameter            options.mu=attributes.mu;//cir parameter
+            //options.b=attributes.b;//gamma parameter            options.b=attributes.b;//cir parameter            options.v=attributes.v;//cir parameter
             options.k=attributes.k;
             options.h=attributes.h;
             options.t=attributes.t;
             options.sigma=[[attributes.sigma]];
             options.y0=[attributes.X0];
            // options.w=param[2];            options.n=attributes.n;            options.maxPD=attributes.maxPD;            options.minPD=attributes.minPD;            //options.sig=attributes.sig; //in the future, this should be n-dimensional            options.alph=attributes.alph; //in the future, this should be n-dimensional
-            options.lambda0=lossGivinLiquid; //            options.bL=.5;//CIR exposure parameter...either remove this or make this part of the GUI            options.alphL=.2;            options.sigL=.2;            
+            options.lambda0=lossGivinLiquid; //            //options.bL=.5;//CIR exposure parameter...either remove this or make this part of the GUI           // options.alphL=.2;            //options.sigL=.2;                        
             $('.progress').show();//('hidden');           // console.log(options);                        socket.emit('creditPressed', options);            socket.on('update', function(data){                //console.log(data);                $('#progressBar').css("width", data);
 			});            socket.on('result', function(data){                $('.progress').hide();                //data=event.data.result;                console.log(data);                if(isNaN(data.y[0]) || Math.abs(data.y[0])>100) { //something bad happened in the algorithm...                    $('#explanationModal').modal();                }                else{                    createFinalChart(data.x, data.y, data.maxY);                               }	            });
             return false;
         });
         function createCharts(){
-            getValues();
-            plotPdf(attributes['a'], attributes['b']);
-            plotTS(attributes.X0, attributes.alpha, attributes.sigma, attributes.t);
+            getValues();            plotTS(attributes.b, attributes.mu,  attributes.v, attributes.t, "ExposureChart", attributes.b, .5);            plotTS(attributes.X0, attributes.alpha,  attributes.sigma, attributes.t, "UnderlyingChart", 1, 0);
+           // plotPdf(attributes['a'], attributes['b']);
+           // plotTS(attributes.X0, attributes.alpha, attributes.sigma, attributes.t);
             /*plotUnif(attributes.minPD, attributes.maxPD);*/
         } 
         function refreshChart(id){
             getValues();
             if(id==='pdf'){
-                plotPdf(attributes['a'], attributes['b']);
+                //plotPdf(attributes['a'], attributes['b']);                plotTS(attributes.b, attributes.mu,  attributes.v, attributes.t, "ExposureChart", attributes.b, .5);
             }
             /*else if(id==='pd'){
                 plotUnif(attributes.minPD, attributes.maxPD);
             }*/
             else if(id==='ts'){
-                plotTS(attributes.X0, attributes.alpha, attributes.sigma, attributes.t);
+                plotTS(attributes.X0, attributes.alpha,  attributes.sigma, attributes.t, "UnderlyingChart", 1, 0);
             }
         }
         $('.form-control').keypress(function(e){
@@ -310,8 +317,8 @@
                     }
                 ]
             });            //finalChart.xAxis[0].setExtremes(xmin,xmax);            //finalChart.showResetZoom();
-        }
-        function createTS(X0,alpha, sigma, t){
+        }                        
+        function createTS(X0,alpha, b, sigma, t, delta){
             var discrete=200;
             var dx=t/discrete;
             var sdx=Math.sqrt(dx);
@@ -323,18 +330,18 @@
             for(var i=1; i<discrete; i++){
                 var norm=inv.qNorm(Math.random());
                 xSeries.push(i*dx);
-                ySeries.push(ySeries[i-1]+alpha*(1.0-ySeries[i-1])*dx+sdx*sigma*norm);
+                ySeries.push(ySeries[i-1]+alpha*(b-ySeries[i-1])*dx+Math.pow(ySeries[i-1], delta)*sdx*sigma*norm);
             } 
             return([xSeries, ySeries]);
         }
-        function plotTS(X0,alpha, sigma, t){
-            var data=createTS(X0, alpha, sigma, t);
+        function plotTS(X0,alpha, sigma, t, chartID, b, delta){
+            var data=createTS(X0, alpha, b, sigma, t, delta);
             var ySeries=data[1];
             var xSeries=data[0];
-            tsChart=new Highcharts.Chart({//$('#UnderlyingChart').highcharts({
+            tsChart[chartID]=new Highcharts.Chart({//$('#UnderlyingChart').highcharts({
                 chart:{
                     type:'line',
-                    renderTo: 'UnderlyingChart'
+                    renderTo: chartID
                 },
                 title: {
                     text:""
